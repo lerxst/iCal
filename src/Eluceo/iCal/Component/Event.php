@@ -275,7 +275,7 @@ class Event extends Component
                 $propertyBag->add(
                     new Property(
                         'X-APPLE-STRUCTURED-LOCATION',
-                        'geo:' . $this->lat . '__COMMA__' . $this->lng,
+                        'geo:' . $this->lat . $this->commaPlaceholder . $this->lng,
                         array(
                             'VALUE'          => 'URI',
                             'X-ADDRESS'      => $this->location,
