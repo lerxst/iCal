@@ -320,4 +320,14 @@ class Calendar extends Component
     {
         return $this->method;
     }
+
+	/**
+	 * Set comma placeholder
+	 *
+	 * @param string placeholder
+	 */
+	public function setCommaPlaceholder($placeholder)
+	{
+		$this->commaPlaceholder = $placeholder;
+	}
 }

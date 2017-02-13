@@ -35,6 +35,14 @@ abstract class Component
     private $componentsBuildOrder = array('VTIMEZONE', 'DAYLIGHT', 'STANDARD');
 
     /**
+     * Comma placeholder
+     * Note: This must be called for all components individually.
+     *
+     * @var string
+     */
+    protected $commaPlaceholder = '__COMMA__';
+
+    /**
      * The type of the concrete Component.
      *
      * @abstract
@@ -109,7 +117,12 @@ abstract class Component
      */
     public function render()
     {
-        return implode("\r\n", $this->build());
+        $tmp = implode("\r\n", $this->build());
+
+        // Replace any placeholders
+        $tmp = str_replace($this->commaPlaceholder, ',', $tmp);
+
+        return $tmp;
     }
 
     /**
@@ -169,4 +182,14 @@ abstract class Component
             $lines[] = $l;
         }
     }
+
+	/**
+	 * Set comma placeholder
+	 *
+	 * @param string placeholder
+	 */
+	public function setCommaPlaceholder($placeholder)
+	{
+		$this->commaPlaceholder = $placeholder;
+	}
 }
